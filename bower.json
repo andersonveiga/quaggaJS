@@ -1,0 +1,21 @@
+{
+  "name": "quaggaJS",
+  "version": "1.0.0",
+  "homepage": "https://github.com/andersonveiga/quaggaJS",
+  "authors": [
+    "Anderson Veiga <preams.anderson@gmail.com>"
+  ],
+  "description": "JS barcade scanning library",
+  "main": "dist/quagga.js",
+  "keywords": [
+    "barcode"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
