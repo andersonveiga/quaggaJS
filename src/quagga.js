@@ -403,16 +403,31 @@ function(Code128Reader,
     return {
         init : function(config, cb, imageWrapper) {
             _config = HtmlUtils.mergeObjects(_config, config);
-            if (imageWrapper) {
+
+            _config.fromStream = (typeof(imageWrapper) === 'undefined');
+
+            if (!_config.fromStream) {
                 _onUIThread = false;
                 initializeData(imageWrapper);
                 return cb();
             } else {
-                initInputStream(cb);
+                if(_config.autostart){
+                    initInputStream(cb);
+                } else {
+                    cb();
+                }
+
             }
         },
-        start : function() {
-            start();
+        start : function(cb) {
+            if(_config.fromStream){
+                if(!cb){
+                    cb = function(){};
+                }
+                initInputStream(cb);
+            } else {
+                start();
+            }
         },
         stop : function() {
             _stopped = true;
